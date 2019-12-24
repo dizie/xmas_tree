@@ -49,6 +49,8 @@ red = []
 green = []
 blue = []
 
+tree_char = ['/', '_', '\\']
+base_char = ['[', ']', '=']
 leaf = []
 base = []
 
@@ -68,24 +70,12 @@ def main():
         if c == 'B':
             blue.append(i)
             tree[i] = '•'
-        if c == '\\':
+        if c in tree_char:
             leaf.append(i)
-            tree[i] = f'\033[32m\\\033[0m'
-        if c == '/':
+            tree[i] = f'\033[32m0\033[0m'
+        if c in base_char:
             leaf.append(i)
-            tree[i] = f'\033[32m/\033[0m'
-        if c == '_':
-            leaf.append(i)
-            tree[i] = f'\033[32m_\033[0m'
-        if c == '[':
-            base.append(i)
-            tree[i] = f'\033[90m[\033[0m'
-        if c == ']':
-            base.append(i)
-            tree[i] = f'\033[90m]\033[0m'
-        if c == '=':
-            leaf.append(i)
-            tree[i] = f'\033[90m=\033[0m'
+            tree[i] = f'\033[90m0\033[0m'
 
 
     ty = threading.Thread(target=lights, args=('yellow', yellow))
